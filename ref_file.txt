@@ -1,0 +1,17 @@
+
+#include <Servo.h> 
+
+Servo myservo;
+
+void setup() 
+{ 
+  myservo.attach(9);
+
+} 
+
+void loop() {
+  myservo.writeMicroseconds(V1);
+  delay(1*1000);
+  myservo.writeMicroseconds(V2);
+  delay(1*1000);
+} 
