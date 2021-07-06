@@ -6,18 +6,18 @@ prev_img = np.zeros((480, 640), dtype = "uint8")
 
 prev_diff = np.zeros((480, 640), dtype = "uint8")
 
-cap = cv2.VideoCapture("output.mp4")
+cap = cv2.VideoCapture("output_original.mp4")
 while cap.isOpened():           
     ret, frame = cap.read()
 
     gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
 
     #gray = cv2.blur(gray,(25,25))
-    gray = cv2.GaussianBlur(gray,(6,6),0)
+    # gray = cv2.GaussianBlur(gray,(6,6),0)
 
     gray = cv2.adaptiveThreshold(gray,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY,11,2)
 
-    cv2.imshow("gray after smmothing",gray)
+    cv2.imshow("gray after smoothing",gray)
 
     corners = cv2.goodFeaturesToTrack(gray,25,0.2,15)
     corners = np.int0(corners)
